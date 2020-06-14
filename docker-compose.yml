@@ -1,0 +1,56 @@
+version: "3"
+services:
+  # frontend:
+  #   build: ./frontend
+  #   container_name: "code-war-frontend"
+  #   volumes:
+  #     - ./frontend:/app
+  #   ports:
+  #     - "8080:8080"
+  api:
+    build: ./backend
+    container_name: "graphqle-logger-api"
+    # restart: always
+    command: npm run dev
+    volumes:
+      - ./backend:/usr/src/service
+      - /usr/src/service/node_modules
+    working_dir: /usr/src/service
+    ports:
+      - "3030:3030"
+    depends_on:
+      - db
+      - redis
+    environment:
+      WAIT_HOSTS: db:5432
+  # nginx:
+  #   container_name: "goodwill-nginx"
+  #   restart: always
+  #   image: nginx
+  #   ports:
+  #     - "80:80"
+  #     #- "443:443"
+  #   volumes:
+  #     - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  #     - ./nginx/codewar.access.log:/etc/nginx/log/codewar.access.log
+  #   depends_on:
+  #     # - frontend
+  #     - api
+  db:
+    build: ./postgresql
+    container_name: "graphql-logger-db"
+    # restart: always
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=4KWXWLruKv2reb8zsn8Ue26PB8pjvKEe
+      - POSTGRES_USER=logger_user
+      - POSTGRES_DB=logger
+  redis:
+    image: "redis:5-alpine"
+    container_name: "graphql-logger-redis"
+    command: redis-server --requirepass h7nVvFfG6F5U7SjmPmEWjDXHJrsjyUpq
+    ports:
+      - "6379:6379"
