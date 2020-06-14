@@ -1,4 +1,4 @@
-import { ApolloServer } from "apollo-server-fastify";
+import { ApolloServer, makeExecutableSchema } from "apollo-server-fastify";
 import merge from "../utils/transform/merge";
 
 // schemas
@@ -15,11 +15,15 @@ const defaultTypeDef = `
 `;
 const typeDefs = [defaultTypeDef, ...user.typeDefs, ...scalars.typeDefs];
 const resolvers = merge({}, ...user.resolvers, ...scalars.resolvers);
-export default new ApolloServer({
+
+const schema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers
+});
+export default new ApolloServer({
+  schema,
+  debug: false,
   formatError: (err: any) => {
-    // const { path, extensions, message } = err;
     //
     // const { code } = extensions;
     // return {
