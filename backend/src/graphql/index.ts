@@ -9,8 +9,13 @@ const defaultTypeDef = `
   type Query{
     helloQuery: String
   }
+
   type Mutation{
-    helloMutation: String
+    helloMutation(name:String!): String
+  }
+
+  type Subscription{
+    helloSubscription: String
   }
 `;
 const typeDefs = [defaultTypeDef, ...user.typeDefs, ...scalars.typeDefs];
