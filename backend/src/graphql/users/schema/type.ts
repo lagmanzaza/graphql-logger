@@ -4,8 +4,8 @@ export default `
     username: String
     password: String
     createAt: Date
-    updateAt: String
+    updateAt: Date
     token: String
-    expire: String
+    expire: Date
   }
 `;
