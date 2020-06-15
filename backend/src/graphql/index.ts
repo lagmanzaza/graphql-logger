@@ -19,7 +19,7 @@ const defaultTypeDef = `
   }
 `;
 const typeDefs = [defaultTypeDef, ...user.typeDefs, ...scalars.typeDefs];
-const resolvers = merge({}, ...user.resolvers, ...scalars.resolvers);
+const resolvers = merge({}, ...user.resolvers);
 
 const schema = makeExecutableSchema({
   typeDefs,

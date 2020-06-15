@@ -7,3 +7,8 @@ export interface IUser {
   token: string;
   expire: Date;
 }
+
+export interface IAuthentication {
+  username: string;
+  password: string;
+}

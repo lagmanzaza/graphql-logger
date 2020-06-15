@@ -1,4 +1,4 @@
-import { IUser } from "../../../../types/user";
+import { IUser, IAuthentication } from "../../../../types/user";
 import db from "../../../../db";
 import * as argon from "argon2";
 import { ApolloError } from "apollo-server-fastify";
@@ -8,7 +8,7 @@ export default {
   Mutation: {
     register: async function(
       _: any,
-      { username, password }: IUser
+      { username, password }: IAuthentication
     ): Promise<IUser> {
       try {
         const hashPassword = await argon.hash(password);

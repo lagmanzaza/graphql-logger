@@ -1,5 +1,4 @@
 import { Kind, GraphQLError, GraphQLScalarType } from "graphql";
-
 // { @link https://github.com/Urigo/graphql-scalars }
 
 const resolver = {
@@ -8,7 +7,7 @@ const resolver = {
 
     description: "Use JavaScript Date object for date/time fields.",
 
-    serialize(value) {
+    serialize(value: any) {
       let v = value;
 
       if (
@@ -39,7 +38,7 @@ const resolver = {
       return v.toJSON();
     },
 
-    parseValue(value) {
+    parseValue(value: any) {
       const date = new Date(value);
 
       // eslint-disable-next-line no-restricted-globals
@@ -50,7 +49,7 @@ const resolver = {
       return date;
     },
 
-    parseLiteral(ast) {
+    parseLiteral(ast: any) {
       if (ast.kind !== Kind.STRING && ast.kind !== Kind.INT) {
         throw new GraphQLError(
           `Can only parse strings & integers to dates but got a: ${ast.kind}`

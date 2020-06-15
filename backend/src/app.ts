@@ -1,7 +1,6 @@
 import * as fastify from "fastify";
 import server from "./graphql";
 import * as dotenv from "dotenv";
-
 dotenv.config();
 export default async () => {
   const app = fastify();
