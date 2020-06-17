@@ -1,4 +1,4 @@
-import resolver from "../../graphql/users/resolvers/mutation/register";
+import resolver from "../../graphql-service/users/resolvers/mutation/register";
 import generator from "../../utils/generator/code-pattern";
 
 export default async () => {

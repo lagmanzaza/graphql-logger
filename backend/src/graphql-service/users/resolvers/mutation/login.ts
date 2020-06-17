@@ -10,7 +10,7 @@ dotenv.config();
 export default {
   Mutation: {
     login: async function(
-      _: any,
+      _: unknown,
       { username, password }: IAuthentication
     ): Promise<IUser> {
       try {

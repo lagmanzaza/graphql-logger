@@ -1,5 +1,5 @@
-import loginResolver from "../../graphql/users/resolvers/mutation/login";
-import registerResolver from "../../graphql/users/resolvers/mutation/register";
+import loginResolver from "../../graphql-service/users/resolvers/mutation/login";
+import registerResolver from "../../graphql-service/users/resolvers/mutation/register";
 import generator from "../../utils/generator/code-pattern";
 
 describe("login", () => {

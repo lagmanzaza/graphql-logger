@@ -7,7 +7,7 @@ import createError from "../../../../utils/helpers/create-error-message";
 export default {
   Mutation: {
     register: async function(
-      _: any,
+      _: unknown,
       { username, password }: IAuthentication
     ): Promise<IUser> {
       try {
