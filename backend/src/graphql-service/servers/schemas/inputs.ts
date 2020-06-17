@@ -1,10 +1,11 @@
 export default `
-  intpu OrderBy {
+  input OrderBy {
     column: String
-    order: Order 
+    order: Order
   }
+
   input searchServer {
     search: String
-    sort: [String]
+    sort: [OrderBy]
   }
 `;

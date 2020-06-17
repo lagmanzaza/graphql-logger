@@ -1,34 +1,15 @@
-import { ApolloServer, makeExecutableSchema } from "apollo-server-fastify";
-import merge from "../utils/transform/merge";
-import * as jsonScalar from "graphql-type-json";
-// schemas
-import user from "./users";
-import scalars from "./scalars-enums";
+import { ApolloServer } from "apollo-server-fastify";
+import schema from "./schema";
+import { ServerContext } from "../types/graphql-context";
+import jwt from "../jwt";
 
-const defaultTypeDef = `
-  scalar JSON
-  type Query{
-    helloQuery: String
-  }
-
-  type Mutation{
-    helloMutation(name:String!): String
-  }
-
-  type Subscription{
-    helloSubscription: String
-  }
-`;
-const typeDefs = [defaultTypeDef, ...user.typeDefs, ...scalars.typeDefs];
-const resolvers = merge({}, { JSON: jsonScalar }, ...user.resolvers);
-
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
 export default new ApolloServer({
   schema,
   debug: false,
+  context: async ({ req }: ServerContext) => {
+    const userInfo = jwt.verify(req.headers.authorization);
+    return { userInfo };
+  },
   formatError: (err: any) => {
     //
     // const { code } = extensions;

@@ -1,9 +1,9 @@
-import userType from "./schema/types";
-import queries from "./schema/queries";
-import mutations from "./schema/mutations";
+import userType from "./schemas/types";
+import queries from "./schemas/queries";
+import mutations from "./schemas/mutations";
 
-import registerResolver from "./resolvers/mutation/register";
-import loginResolver from "./resolvers/mutation/login";
+import registerResolver from "./resolvers/mutations/register";
+import loginResolver from "./resolvers/mutations/login";
 
 export default {
   typeDefs: [userType, queries, mutations],
