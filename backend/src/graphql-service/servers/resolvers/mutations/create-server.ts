@@ -34,7 +34,7 @@ export default {
           .into("servers")
           .returning("*");
 
-        return insertedServer[0];
+        return { ...insertedServer[0], message: "created", action: "create" };
       } catch (e) {
         const { code, message } = createError("server", e.message);
         throw new ApolloError(message, code);

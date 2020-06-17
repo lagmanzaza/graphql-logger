@@ -1,12 +1,12 @@
 import { IncomingMessage, ServerResponse } from "http";
 
 export interface ResolverContext {
-  _extensionStac: any;
+  _extensionStac?: any;
   userInfo: {
     isValid: boolean;
     userId: number;
-    iat: number;
-    exp: number;
+    iat?: number;
+    exp?: number;
   };
 }
 

@@ -1,4 +1,4 @@
-import resolver from "../../graphql-service/users/resolvers/mutation/register";
+import resolver from "../../graphql-service/users/resolvers/mutations/register";
 import generator from "../../utils/generator/code-pattern";
 
 export default async () => {
@@ -7,5 +7,5 @@ export default async () => {
     password: generator("xxxxxxxxxxx")
   };
   const result = await resolver.Mutation.register(null, data);
-  return result;
+  return { ...result, rawData: data };
 };
