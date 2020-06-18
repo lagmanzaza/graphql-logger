@@ -1,0 +1,66 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true,
+      "jest": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:prettier/recommended"],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 11,
+      "sourceType": "module"
+  },
+  "plugins": ["react", "emotion"],
+  "rules": {
+      "no-console": "warn",
+      "react/jsx-filename-extension": [
+          1,
+          {
+              "extensions": [".js", ".jsx"]
+          }
+      ],
+      "comma-dangle": 0,
+      "react/prop-types": 0,
+      "no-underscore-dangle": 0,
+      "import/imports-first": ["error", "absolute-first"],
+      "import/newline-after-import": "error",
+      "import/prefer-default-export": 0,
+      "semi": "error",
+      "react/destructuring-assignment": 0,
+      "react/state-in-constructor": 0,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "no-unused-vars": [
+          0,
+          {
+              "varsIgnorePattern": "React"
+          }
+      ],
+      "arrow-parens": 0,
+      // Indent with 4 spaces
+      "indent": ["error", 4],
+      // Indent JSX with 4 spaces
+      "react/jsx-indent": ["warn", 4],
+      // Indent props with 4 spaces
+      "react/jsx-indent-props": ["error", 4],
+      "react/jsx-props-no-spreading": 1,
+      "emotion/jsx-import": "error",
+      "emotion/no-vanilla": "error",
+      "emotion/import-from-emotion": "error",
+      "emotion/styled-import": "error",
+      "emotion/syntax-preference": [2, "string"],
+      "prettier/prettier": [
+          "error",
+          {
+              "endOfLine": "auto"
+          }
+      ],
+      "camelcase": "warn"
+  }
+}
