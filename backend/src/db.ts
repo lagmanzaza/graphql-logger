@@ -14,5 +14,5 @@ export default knex({
     min: 0,
     max: 100
   },
-  debug: true
+  debug: false
 });
