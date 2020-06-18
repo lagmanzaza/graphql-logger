@@ -1,11 +1,13 @@
 export default `
   input OrderBy {
-    column: String
-    order: Order
+    column: String!
+    order: Order!
   }
 
   input searchServer {
-    search: String
+    search: String!
     sort: [OrderBy]
+    limit: Int!
+    offset: Int!
   }
 `;

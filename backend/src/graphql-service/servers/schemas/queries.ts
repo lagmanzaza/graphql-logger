@@ -1,5 +1,6 @@
 export default `
   extend type Query{
-    getServer(search: searchServer!): [Server]
+    getServers(search: searchServer!): [Server]
+    getServerById(serverId: Int!): Server
   }
 `;

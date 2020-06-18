@@ -15,7 +15,7 @@ export default {
       validateToken(userInfo);
       try {
         const updateResult = await db("servers")
-          .update({ name })
+          .update({ name, updateAt: new Date() })
           .where("serverId", "=", serverId)
           .returning("*");
 
