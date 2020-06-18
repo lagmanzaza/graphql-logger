@@ -18,20 +18,4 @@ describe("create server", () => {
     expect(result.message).toEqual("created");
     expect(result.action).toEqual("create");
   });
-
-  test("create server with wrong Owner", async () => {
-    const { userId } = await login();
-    const userInfo = {
-      isValid: true,
-      userId
-    };
-    const result = await resolver.Mutation.createServer(
-      null,
-      { name: randomName("xxxxxxxxx") },
-      { userInfo }
-    );
-
-    expect(result.message).toEqual("created");
-    expect(result.action).toEqual("create");
-  });
 });

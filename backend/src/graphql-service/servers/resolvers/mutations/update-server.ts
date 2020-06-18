@@ -9,7 +9,24 @@ export default {
   Mutation: {
     updateServer: async (
       _: unknown,
-      { serverId, name }: IServer
-    ): Promise<IServer> => {}
+      { serverId, name }: IServer,
+      { userInfo }: ResolverContext
+    ): Promise<IServer> => {
+      validateToken(userInfo);
+      try {
+        const updateResult = await db("servers")
+          .update({ name })
+          .where("serverId", "=", serverId)
+          .returning("*");
+
+        const isNotUpdated = updateResult.length === 0;
+        if (isNotUpdated) throw new Error("server not found");
+
+        return { ...updateResult[0], message: "updated", action: "update" };
+      } catch (e) {
+        const { code, message } = createError("server", e.message);
+        throw new ApolloError(message, code);
+      }
+    }
   }
 };

@@ -5,8 +5,9 @@ import inputs from "./schemas/inputs";
 
 // resolvers
 import createServerResolver from "./resolvers/mutations/create-server";
+import updateServerResolver from "./resolvers/mutations/update-server";
 
 export default {
   typeDefs: [serverType, queries, mutations, inputs],
-  resolvers: [createServerResolver]
+  resolvers: [createServerResolver, updateServerResolver]
 };
