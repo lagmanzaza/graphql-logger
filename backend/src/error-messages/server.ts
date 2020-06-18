@@ -6,5 +6,9 @@ export default [
   {
     code: "404",
     message: "server not found"
+  },
+  {
+    code: "403",
+    message: "your permission is not permitted"
   }
 ];

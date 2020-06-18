@@ -6,24 +6,26 @@ import createError from "../../../../utils/helpers/create-error-message";
 import { ApolloError } from "apollo-server-fastify";
 
 export default {
-  Mutation: {
-    updateServer: async (
+  Query: {
+    getServerById: async (
       _: unknown,
-      { serverId, name }: IServer,
+      { serverId }: IServer,
       { userInfo }: ResolverContext
     ): Promise<IServer> => {
       validateToken(userInfo);
       try {
-        const updateResult = await db("servers")
-          .update({ name, updateAt: new Date() })
-          .where("serverId", "=", serverId)
-          .where("ownerId", "=", userInfo.userId)
-          .returning("*");
+        const result = await db
+          .select("serverId", "ownerId", "name", "key", "createAt", "updateAt")
+          .from("servers")
+          .where("serverId", "=", serverId);
 
-        const isNotUpdated = updateResult.length === 0;
-        if (isNotUpdated) throw new Error("server not found");
+        const isNotExist = result.length === 0;
+        if (isNotExist) throw new Error("server not found");
 
-        return { ...updateResult[0], message: "updated", action: "update" };
+        const isNotOwner = result[0].ownerId !== userInfo.userId;
+        if (isNotOwner) throw new Error("your permission is not permitted");
+
+        return result[0];
       } catch (e) {
         const { code, message } = createError("server", e.message);
         throw new ApolloError(message, code);

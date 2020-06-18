@@ -16,6 +16,7 @@ export default {
       try {
         const deleteResult: any = await db("servers")
           .where("serverId", "=", serverId)
+          .where("ownerId", "=", userInfo.userId)
           .returning("*")
           .del();
 
