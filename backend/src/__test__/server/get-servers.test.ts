@@ -27,6 +27,6 @@ describe("get Server", () => {
       userInfo
     });
 
-    expect(result.length).toBeGreaterThan(2);
+    expect(result.length).toBeGreaterThanOrEqual(1);
   });
 });
