@@ -5,7 +5,7 @@ export default `
   }
 
   input searchServer {
-    search: String!
+    search: String
     sort: [OrderBy]
     limit: Int!
     offset: Int!

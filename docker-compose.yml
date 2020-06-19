@@ -10,11 +10,8 @@ services:
       - /app/node_modules
     ports:
       - "3000:3000"
-    depends_on: 
+    depends_on:
       - api
-    environment:
-      - WAIT_HOSTS=api:3030
-      - CI=true
   api:
     build: ./backend
     container_name: "graphql-logger-api"

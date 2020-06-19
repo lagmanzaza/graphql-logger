@@ -7,8 +7,16 @@ import inputs from "./schemas/inputs";
 import createServerResolver from "./resolvers/mutations/create-server";
 import updateServerResolver from "./resolvers/mutations/update-server";
 import deleteServerResolver from "./resolvers/mutations/delete-server";
+import getServersByQueryResolver from "./resolvers/queries/get-server";
+import getServerByIdResolver from "./resolvers/queries/get-id";
 
 export default {
   typeDefs: [serverType, queries, mutations, inputs],
-  resolvers: [createServerResolver, updateServerResolver, deleteServerResolver]
+  resolvers: [
+    getServerByIdResolver,
+    createServerResolver,
+    updateServerResolver,
+    deleteServerResolver,
+    getServersByQueryResolver
+  ]
 };
