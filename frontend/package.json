@@ -67,8 +67,7 @@
   "lint-staged": {
     "src/**/*.{js,css,json,md,ts,tsx}": [
       "eslint",
-      "pretty-quick — staged",
-      "git add"
+      "pretty-quick — staged"
     ]
   }
 }
