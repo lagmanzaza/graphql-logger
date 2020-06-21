@@ -2,19 +2,13 @@ import { GraphQLRequestContext } from "apollo-server-plugin-base";
 import { PerformanceObserver, performance } from "perf_hooks";
 import generateId from "./generate-id";
 import fetch from "node-fetch";
-
-interface Config {
-  enginUrl: string;
-  key: string;
-  additionInfoKey?: string[];
-}
-
+import { PluginConfig } from "./types";
 let startMark: string;
 let endMark: string;
 let measureName: string;
 let additionInfo: any = {};
+let logServerInfo: PluginConfig;
 
-let logServerInfo: Config;
 const obs = new PerformanceObserver((items) => {
   const perfInfo = items.getEntries()[0];
   const logInfo = {
@@ -37,7 +31,7 @@ const obs = new PerformanceObserver((items) => {
 
 obs.observe({ entryTypes: ["measure"] });
 
-export default (config: Config) => {
+export default (config: PluginConfig) => {
   logServerInfo = config;
   return {
     requestDidStart(service: any) {
