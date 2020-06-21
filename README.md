@@ -23,10 +23,10 @@ I hope that my project will be inspire you to learn about Graphql Server
 	- [ ] filter by period time
 	- [ ] filter by server
 	- [ ] real time chart
- - [ ] Plugin
-	 - [ ] Log basic information of each request
-	 - [ ] Log additional information of each request
-	 - [ ] measure duration time of each request
+ - [x] Plugin
+	 - [x] Log basic information of each request
+	 - [x] Log additional information of each request
+	 - [x] measure duration time of each request
 
 #### Frontend
 
