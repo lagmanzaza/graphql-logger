@@ -34,8 +34,7 @@ CREATE TABLE events(
   "action" ACTION DEFAULT 'QUERY',
   "additionInfo" JSON,
   "operationName" VARCHAR(64) NOT NULL,
-  "startTime" TIMESTAMP NOT NULL,
-  "endTime" TIMESTAMP NOT NULL,
+  "duration" NUMERIC(10,4),
   "createAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   "updateAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
