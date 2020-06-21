@@ -32,6 +32,7 @@ CREATE TABLE events(
   "serverId" INT NOT NULL,
   "typeId" INT NOT NULL,
   "action" ACTION DEFAULT 'QUERY',
+  "additionInfo" JSON,
   "operationName" VARCHAR(64) NOT NULL,
   "startTime" TIMESTAMP NOT NULL,
   "endTime" TIMESTAMP NOT NULL,
