@@ -9,7 +9,8 @@ export default async () => {
   const app = fastify();
   app.register(server.createHandler());
   server.installSubscriptionHandlers(app.server);
-  await app.listen(3030, "0.0.0.0");
+  const port = process.env.SERVER_PORT || 3030;
+  await app.listen(Number(port), "0.0.0.0");
   console.log("listening");
   return;
 };
