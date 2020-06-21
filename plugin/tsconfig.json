@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/test", "src/types.ts"],
   "compilerOptions": {
     "types": ["node"],
     /* Visit https://aka.ms/tsconfig.json to read more about this file */

@@ -5,7 +5,7 @@
   "main": "src",
   "types": "dist",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "test-server": "rm -rf dist && tsc && node dist/test/server.js",
     "prepublish": "tsc"
   },
